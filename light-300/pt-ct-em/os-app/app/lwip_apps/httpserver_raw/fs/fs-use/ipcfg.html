@@ -1,0 +1,48 @@
+<html>
+<head>
+	<title>串口服务器配置(YEEJOIN)ipcfg</title>
+</head>
+<body>
+	<br />
+	<br />
+	<form action="ipcfg.cgi" method="get">
+		<fieldset>
+			<legend><h4>IP配置信息</h4></legend>
+			<table>
+				<tr>
+					<td style="text-align:right;background-color:#C0C0C0"> 地址类型：</td>
+					<td>
+						<select name="im0">
+							<option value="0">静态IP</option>
+							<option value="1">动态IP</option>						
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align:right;background-color:#C0C0C0"> IP地址：</td>
+					<td> <input type="text" name="a03" size="3" maxlength="3" />. </td>
+					<td> <input type="text" name="a02" size="3" maxlength="3" />. </td>
+					<td> <input type="text" name="a01" size="3" maxlength="3" />. </td>
+					<td> <input type="text" name="a00" size="3" maxlength="3" /> </td>
+				</tr>
+				<tr>
+					<td style="text-align:right;background-color:#C0C0C0"> 子网掩码：  </td>
+					<td> <input type="text" name="m03"  size="3" maxlength="3"/>. </td>
+					<td> <input type="text" name="m02"  size="3" maxlength="3"/>. </td>
+					<td> <input type="text" name="m01"  size="3" maxlength="3"/>. </td>
+					<td> <input type="text" name="m00"  size="3" maxlength="3"/> </td>
+				</tr>
+				<tr>
+					<td style="text-align:right;background-color:#C0C0C0"> 网关：</td>
+					<td> <input type="text" name="g03" size="3" maxlength="3" />. </td>
+					<td> <input type="text" name="g02" size="3" maxlength="3" />. </td>
+					<td> <input type="text" name="g01" size="3" maxlength="3" />. </td>
+					<td> <input type="text" name="g00" size="3" maxlength="3" /> </td>
+				</tr>
+			</table>
+		</fieldset>
+		<input type="submit" value="保存">
+		<input type="reset" value="取消">
+	</form>
+</body>
+</html>

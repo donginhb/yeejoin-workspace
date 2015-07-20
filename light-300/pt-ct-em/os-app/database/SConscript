@@ -1,0 +1,23 @@
+from building import *
+
+cwd = GetCurrentDir()
+
+src_comm = Split("""
+sys_cfg_api.c
+syscfgdata.c
+base_ds.c
+""")
+
+src = src_comm
+
+CPPPATH = [
+	cwd,
+	cwd + '/include',
+	cwd + '/../app/include'
+]
+
+CPPDEFINES = []
+
+group = DefineGroup('database', src, depend = ['RT_USING_PRIV_DATABASE'], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES)
+
+Return('group')

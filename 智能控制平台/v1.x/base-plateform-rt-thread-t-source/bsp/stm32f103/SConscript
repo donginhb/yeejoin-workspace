@@ -1,0 +1,38 @@
+import rtconfig
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+
+src_bsp = ['startup.c', 'board.c', 'stm32f10x_it.c']
+
+src_drv = ['usart.c', 'serial.c']
+
+#if GetDepend('RT_USING_DFS'):
+#	src_drv += ['msd.c']
+
+if GetDepend('RT_USING_LWIP'):
+	src_drv += ['stm32_eth.c']
+
+src = src_bsp + src_drv
+
+# cwd --           E:\SourceInsightWork\base-plateform-rt-thread\source\bsp\stm32f103
+# drive include -- E:\SourceInsightWork\base-plateform-rt-thread\source\bsp\drivers\include
+# app include   -- E:\SourceInsightWork\base-plateform-rt-thread\source\applications\include
+# lwip port	-- E:\SourceInsightWork\base-plateform-rt-thread\source\components\net\lwip\ports\include
+# lwip include	-- E:\SourceInsightWork\base-plateform-rt-thread\source\components\net\lwip\src\include
+# lwip ipv4	-- E:\SourceInsightWork\base-plateform-rt-thread\source\components\net\lwip\src\include\ipv4\
+CPPPATH = [
+	cwd,
+	cwd + '/include',
+	cwd + '/../drivers/include',
+	cwd + '/../../applications/include',
+	cwd + '/../../components/net/lwip/ports/include',
+	cwd + '/../../components/net/lwip/src/include',
+	cwd + '/../../components/net/lwip/src/include/ipv4',
+]
+
+CPPDEFINES = []
+group = DefineGroup('Startup', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES)
+
+Return('group')

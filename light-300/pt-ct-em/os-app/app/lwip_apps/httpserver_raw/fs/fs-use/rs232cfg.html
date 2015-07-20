@@ -1,0 +1,110 @@
+<html>
+<head>
+	<title>串口服务器配置(YEEJOIN)rs232cfg</title>
+</head>
+<body>	
+	<fieldset>
+		<legend><h4>RS232端口0配置</h4></legend>
+		<form action="rs232cfg.cgi" method="get">
+			<table border="0" cellspacing="10" style="text-align:right">
+				<tr>
+					<th>&nbsp;</th>
+					<th style="background-color:#C0C0C0">波特率</th>
+					<th style="background-color:#C0C0C0">数据位</th>
+					<th style="background-color:#C0C0C0">校验位</th>
+					<th style="background-color:#C0C0C0">停止位</th>
+				</tr>
+				<tr>
+					<td style="background-color:#C0C0C0">端口0</td>
+					<td>
+						<select name="br0">
+							<option value="4800">4800</option>
+							<option value="9600">9600</option>
+							<option value="19200">19200</option>
+							<option value="38400">38400</option>
+							<option value="43000">43000</option>
+							<option value="56000">56000</option>
+							<option value="115200" selected="selected">115200</option>
+						</select>
+					</td>
+					<td>
+						<select name="db0">
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8" selected="selected">8</option>
+						</select>
+					</td>
+					<td>
+						<select name="pb0">
+							<option value="0" selected="selected">None</option>
+							<option value="1">Even</option>
+							<option value="2">Odd</option>
+						</select>
+					</td>
+					<td>
+						<select name="sb0">
+							<option value="1" selected="selected">1</option>
+							<option value="2">2</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="保存">
+			<input type="reset" value="取消">
+		</form>
+	</fieldset>
+	<br />
+    <fieldset>
+		<legend><h4>RS232端口1配置</h4></legend>
+		<form action="rs232cfg.cgi" method="get">
+			<table border="0" cellspacing="10" style="text-align:right">
+				<tr>
+					<th>&nbsp;</th>
+					<th style="background-color:#C0C0C0">波特率</th>
+					<th style="background-color:#C0C0C0">数据位</th>
+					<th style="background-color:#C0C0C0">校验位</th>
+					<th style="background-color:#C0C0C0">停止位</th>
+				</tr>
+				<tr>
+					<td style="background-color:#C0C0C0">端口1</td>
+					<td>
+						<select name="br1">
+							<option value="4800">4800</option>
+							<option value="9600" selected="selected">9600</option>
+							<option value="19200">19200</option>
+							<option value="38400">38400</option>
+							<option value="43000">43000</option>
+							<option value="56000">56000</option>
+							<option value="115200" selected="selected">115200</option>
+						</select>
+					</td>
+					<td>
+						<select name="db1">
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8" selected="selected">8</option>
+						</select>
+					</td>
+					<td>
+						<select name="pb1">
+							<option value="0" selected="selected">None</option>
+							<option value="1">Even</option>
+							<option value="2">Odd</option>
+						</select>
+					</td>
+					<td>
+						<select name="sb1">
+							<option value="1" selected="selected">1</option>
+							<option value="2">2</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<input type="submit" value="保存">
+			<input type="reset" value="取消">
+		</form>
+	</fieldset>
+</body>
+</html>

@@ -1,0 +1,16 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+if GetDepend('EM_ALL_TYPE_BASE'):
+	src = [
+		'frame_server.c',
+		#cwd + '/httpserver_raw/fs.c',
+	]
+else:
+	src = []
+
+group = DefineGroup('tcp_app', src, depend=[])
+
+Return('group')

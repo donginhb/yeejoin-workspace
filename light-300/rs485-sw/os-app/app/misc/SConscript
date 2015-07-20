@@ -1,0 +1,15 @@
+import rtconfig
+from building import *
+
+src = Split("""
+	misc_lib.c
+	debug_sw.c
+    ringbuf.c
+""")
+	
+if GetDepend('RT_USING_RS485_BUS'):
+	src.append('rs485.c')
+
+group = DefineGroup('misc_app', src, depend=[])
+
+Return('group')

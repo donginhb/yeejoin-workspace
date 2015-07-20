@@ -1,0 +1,10 @@
+Import('RTT_ROOT')
+Import('rtconfig')
+from building import *
+
+src	= Glob('*.c')
+	
+group = DefineGroup('tl16', src, depend=[])
+
+
+Return('group')

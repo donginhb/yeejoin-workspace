@@ -1,0 +1,68 @@
+import rtconfig
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+
+src_bsp = ['application.c']
+
+src_bsp += ['startup.c', 'board.c', 'stm32f10x_it.c', 'stm32_cpu_comm.c']
+src_drv = ['usart.c', 'serial.c']
+
+if GetDepend('RT_USING_RTC'):
+	src_drv += ['rtc.c']
+
+if GetDepend('RT_USING_SERIAL_FLASH'):
+	src_drv += ['spiflash.c', 'sf_hal.c']
+#	if rtconfig.STM32_TYPE == 'STM32F10X_HD':
+#		src_drv += ['sdcard.c']
+#	else:
+#		src_drv += ['msd.c']
+
+if GetDepend('RT_USING_TCPIP_STACK'):
+#	src_drv += ['enc28j60.c'] + ['dm9000a.c']
+	src_drv += ['stm32_eth.c']
+
+if GetDepend("COMPILE_MISC_TEST_FILE"):
+	src_drv += ["misc_test.c"]
+
+src = src_bsp + src_drv
+
+
+#CPPPATH = [ GetCurrentDir(), GetCurrentDir()+'/../../components/dfs/filesystems/elmfat' ]
+# cwd --           E:\SourceInsightWork\base-plateform-rt-thread\source\bsp\stm32f103
+# drive include -- E:\SourceInsightWork\base-plateform-rt-thread\source\bsp\drivers\include
+# app include   -- E:\SourceInsightWork\base-plateform-rt-thread\source\applications\include
+# lwip port	-- E:\SourceInsightWork\base-plateform-rt-thread\source\components\net\lwip\ports\include
+# lwip include	-- E:\SourceInsightWork\base-plateform-rt-thread\source\components\net\lwip\src\include
+# lwip ipv4	-- E:\SourceInsightWork\base-plateform-rt-thread\source\components\net\lwip\src\include\ipv4\
+CPPPATH = [
+	cwd,
+	cwd + '/include',
+	cwd + '/../drivers/include',
+	cwd + '/../../applications/include',
+	cwd + 'Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x',
+]
+	
+if GetDepend('RT_USING_FILESYSTEM'):
+	CPPPATH += [
+		cwd + '/../../components/dfs/filesystems/elmfat'
+
+	]
+if GetDepend('RT_USING_TCPIP_STACK'):
+	CPPPATH += [
+		cwd + '/../../components/net/lwip/ports/include',
+		cwd + '/../../components/net/lwip/src/include',
+		cwd + '/../../components/net/lwip/src/include/ipv4'
+	]
+	
+CPPPATH += [
+	cwd + '/../drivers/EZMacPRO_v3.0.1r-n/include',
+	cwd + '/../drivers/EZMacPRO_v3.0.1r-n/stack/include',
+]
+
+CPPDEFINES = []
+group = DefineGroup('Startup', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES)
+
+Return('group')
+

@@ -1,0 +1,17 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+if GetDepend('RT_USING_RS485_BUS') and (GetDepend('EM_MASTER_DEV') or GetDepend('EM_MULTI_MASTER_DEV')) :
+	src = [
+		'frame_master.c',
+		'frame_client.c',
+		#cwd + '/httpserver_raw/fs.c',
+	]
+else:
+	src = []
+
+group = DefineGroup('485_tcp_app', src, depend=[])
+
+Return('group')

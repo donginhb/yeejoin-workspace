@@ -1,0 +1,20 @@
+import rtconfig
+from building import *
+
+
+src = []
+
+if  GetDepend('EM_ALL_TYPE_BASE'):
+	src = Split("""
+		sink_info.c
+		sinkinfo_api4mib.c
+		sink-data-proc.c
+	""")
+else:
+	src = []
+	
+
+group = DefineGroup('sinkinfo_app', src, depend=['EM_ALL_TYPE_BASE'])
+
+Return('group')
+

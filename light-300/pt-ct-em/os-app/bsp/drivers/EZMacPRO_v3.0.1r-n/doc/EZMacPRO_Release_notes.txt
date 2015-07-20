@@ -1,0 +1,87 @@
+*******************************************************************************
+*   Copyright 2012 Silicon Laboratories, Inc.                                 *
+*   http://www.silabs.com                                                     *
+*******************************************************************************
+
+
+June 18, 2012
+EZMacPRO release notes (v3.0.1r)
+
+    - Fixed a Packet Filtering bug
+    - Fixed a Packet Forwarding bug
+    - Simplified HW platform selection
+    - Star Demo rewritten
+    - Added UART tracing to demos
+    - Added new projects per HW platforms
+    - Silabs IDE/Assembler/Compiler/Linker used:
+        - Silabs IDE v4.40
+        - Keil:
+            - a51.exe       v8.02
+            - c51.exe       v9.01
+            - lx51.exe      v4.41
+        - Raisonance:
+            - ma51.exe      6.08.10
+            - rc51.exe      3.08.10
+            - lx51.exe      5.08.10
+        - SDCC:
+            - sdas8051.exe  2.0.0
+            - sdcc.exe      3.1.0
+            - sdcc.exe      3.1.0
+-------------------------------------------------------------------------------
+
+March 7, 2012
+EZMacPRO release notes (v3.0.0r)
+
+    - New API callbacks added:
+        - EZMacPRO_StateWakeUpEntered()
+        - EZMacPRO_StateSleepEntered()
+        - EZMacPRO_StateIdleEntered()
+        - EZMacPRO_StateRxEntered()
+        - EZMacPRO_StateTxEntered()
+        - EZMacPRO_StateErrorEntered()
+        - EZMacPRO_PacketDiscarded()
+        - EZMacPRO_AckSending()
+    - API callbacks renamed to avoid confusion:
+        - EZMacProTX_ErrorLBT_Timeout() --> EZMacPRO_LBTTimeout()
+        - EZMacProTX_ErrorNoAck() --> EZMacPRO_AckTimeout()
+    - API callbacks removed:
+        - EZMacPRO_WokeUp()
+        - EZMacPRO_WokeUp_Error()
+    - New API command added:
+        - EZMacPRO_Ack_Write()
+    - Support for custom data in acknowledgements
+    - Reorganised files into three directories to increase code portability:
+        - application: sample codes, demos
+        - stack: EZMacPRO stack files
+        - bsp: hardware related files
+    - Default stack timer changed from Timer0 to Timer3.
+    - Several bug fixes
+    - SDCC warnings fixed
+-------------------------------------------------------------------------------
+
+November 3, 2010
+EZMacPRO release notes (v2.1.3r)
+
+    - Include the programming guide in to the installer 
+-------------------------------------------------------------------------------
+
+August 16, 2010
+EZMacPRO release notes (v2.1.2r)
+
+    - Fixed the SDCC and Raisonance projects
+-------------------------------------------------------------------------------
+
+July 30, 2010
+EZMacPRO release notes (v2.1r)
+
+    - Added Si10xx motherboard platform support
+    - EZHOP can use all 50 channels at all data rates
+    - Per current regulations, EZHOP is currently only designed to operate in
+        the 915 MHz band
+    - Added hardware platform definitions to the code in order to simplify
+        customer experience with the various stock platforms (eg. SDBC-DK3)
+    - Added Raisonance compiler support
+    - Added the 24.5 MHz internal system clock support
+
+    
+    

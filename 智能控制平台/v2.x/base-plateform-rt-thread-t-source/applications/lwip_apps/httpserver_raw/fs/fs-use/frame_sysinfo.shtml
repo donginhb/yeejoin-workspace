@@ -1,0 +1,72 @@
+<html>
+<head>
+	<title>串口服务器配置(YEEJOIN)sysinfo</title>
+</head>
+<body>
+	<br />
+	<fieldset>
+	<legend style="text-align:center"><h3>系统信息</h3></legend>
+		<table border="0" cellspacing="10" style="text-align:right">
+			<tr>
+				<td style="background-color:#C0C0C0">设备名称:</td>
+				<td style="text-align:left">S2E-V0.1</td>
+			</tr>
+			<tr>
+				<td style="background-color:#C0C0C0">固件版本:</td>
+				<td style="text-align:left">V0.1</td>
+			</tr>
+			<tr>
+				<td style="background-color:#C0C0C0">IP模式:</td>
+				<td style="text-align:left"><!--#ipmode0--></td>
+			</tr>
+			<tr>
+				<td style="background-color:#C0C0C0">IP地址:</td>
+				<td style="text-align:left"><!--#ipaddr0--></td>
+			</tr>
+			<tr>
+				<td style="background-color:#C0C0C0">网关:</td>
+				<td style="text-align:left"><!--#gateway0--></td>
+			</tr>
+			<tr>
+				<td style="background-color:#C0C0C0">子网掩码:</td>
+				<td style="text-align:left"><!--#netmask0--></td>
+			</tr>
+			<tr>
+				<td style="background-color:#C0C0C0">MAC地址:</td>
+				<td style="text-align:left"><!--#mac0--></td>
+			</tr>
+		</table>
+	</fieldset>
+	<br /> <br /> 
+	<fieldset>
+	<legend style="text-align:center"><h3>当前端口设置</h3></legend>
+		<table border="0" cellspacing="10" style="text-align:right">
+			<tr>
+				<th>&nbsp;</th>
+				<th style="text-align:right;background-color:#C0C0C0">端口0 </th>
+				<th style="text-align:right;background-color:#C0C0C0">端口1 </th>
+			</tr>
+			<tr>
+				<td style="text-align:right;background-color:#C0C0C0">波特率:</td>
+				<td><!--#baud0--></td>
+				<td><!--#baud1--></td>
+			</tr>
+			<tr>
+				<td style="text-align:right;background-color:#C0C0C0">数据位:</td>
+				<td><!--#databit0--></td>
+				<td><!--#databit1--></td>
+			</tr>
+			<tr>
+				<td style="text-align:right;background-color:#C0C0C0">校验位:</td>
+				<td><!--#parity0--></td>
+				<td><!--#parity1--></td>
+			</tr>
+			<tr>
+				<td style="text-align:right;background-color:#C0C0C0">停止位:</td>
+				<td><!--#stopbit0--></td>
+				<td><!--#stopbit1--></td>
+			</tr>
+		</table>
+	</fieldset>
+</body>
+</html>

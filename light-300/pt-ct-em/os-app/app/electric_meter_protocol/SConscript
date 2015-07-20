@@ -1,0 +1,20 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+if GetDepend('RT_USING_DLT645'):
+	src = Split("""
+		ammeter.c
+		ammeter_usart.c
+		ammeter_645_97.c
+		ammeter_645_07.c
+		ammeter_edmi.c
+		auto_negoti_timer.c
+	""")
+else:
+	src = []
+
+group = DefineGroup('amm_pro_app', src, depend=[])
+
+Return('group')

@@ -1,0 +1,16 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+if GetDepend('RT_USING_RS485_BUS') and GetDepend('WIRELESS_MASTER_NODE'):
+	src = [
+		'frame_slave.c',
+		#cwd + '/httpserver_raw/fs.c',
+	]
+else:
+	src = []
+
+group = DefineGroup('485_app', src, depend=[])
+
+Return('group')

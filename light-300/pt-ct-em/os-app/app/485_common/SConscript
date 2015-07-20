@@ -1,0 +1,15 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+if GetDepend('RT_USING_RS485_BUS'):
+	src = [
+		'rs485_common.c',
+	]
+else:
+	src = []
+
+group = DefineGroup('485_tcp_app', src, depend=[])
+
+Return('group')

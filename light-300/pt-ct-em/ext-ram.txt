@@ -1,0 +1,197 @@
+1、地址／数据总线测试
+(2 * 1024 * 1024UL) == 2097152 == 0x200000
+512 ＊ 1024 = 0x80000
+mem_tdata_bus(0X60000000, 0x80000, 32)
+mem_tdata_bus(0X60000000, 0x80000, 16)
+mem_taddr_bus(0X60000000, 0x80000, 0x55, 0xaa)
+
+
+
+yeejoin>>mem_tdata_bus(0X60000000, 0x80000, 32)
+data bus no error!(width:32)
+yeejoin>>
+yeejoin>>mem_tdata_bus(0X60000000, 0x80000, 16)
+data bus no error!(width:16)
+yeejoin>>
+yeejoin>>
+yeejoin>>mem_taddr_bus(0X60000000, 0x80000, 0x55, 0xaa)
+mem_taddr_bus() over!
+yeejoin>>
+yeejoin>>
+
+
+
+
+enum test_psram_cmde {
+	TPC_START		= 0,
+
+	WRITE_PSRAM		= 1,
+	READ_PSRAM		= 2,
+	AUTO_CHECK_WHOLE_PSRAM	= 3,
+
+	WRITE_DHW_PSRAM		= 4,
+	WRITE_SEQ_PSRAM		= 5,
+	TPC_END,
+};
+/*
+ * cmd		-- command
+ * unit		-- 每次操作的字节数
+ */
+void test_psram(const int cmd, int unit,
+		unsigned long addr, unsigned long value, unsigned int cnt,
+		int addr_delta, int val_delta)
+
+test_psram(1, 4, 0X60000000, 0xaaaaaaaa, 1, 1, 1)
+test_psram(1, 4, 0x60000004, 0x55555555, 1, 1, 1)
+test_psram(2, 4, 0X60000000, 0xaaaaaaaa, 1, 1, 1)
+test_psram(2, 4, 0x60000004, 0x55555555, 1, 1, 1)
+
+test_psram(1, 4, 0X60000000, 0x55555555, 1, 1, 1)
+test_psram(1, 4, 0x60000004, 0xaaaaaaaa, 1, 1, 1)
+test_psram(2, 4, 0X60000000, 0x55555555, 1, 1, 1)
+test_psram(2, 4, 0x60000004, 0xaaaaaaaa, 1, 1, 1)
+
+
+
+test_psram(1, 1, 0X60000000, 0x11, 2, 1, 1)
+test_psram(2, 1, 0X60000000, 0x11, 2, 1, 1)
+
+test_psram(1, 2, 0X60000000, 0x2222, 1, 1, 1)
+test_psram(2, 2, 0X60000000, 0x2222, 1, 1, 1)
+
+test_psram(1, 4, 0X60000000, 0x44444444, 1, 1, 1)
+test_psram(2, 4, 0X60000000, 0x44444444, 1, 1, 1)
+
+test_psram(3, 1, 0X60000000, 0x80000, 1, 1, 1)
+test_psram(3, 2, 0X60000000, 0x40000, 1, 1, 1)
+test_psram(3, 4, 0X60000000, 0x20000, 1, 1, 1)
+
+
+
+================================================================================
+yeejoin>>
+yeejoin>>test_psram(1, 4, 0X60000000, 0xaaaaaaaa, 1, 1, 1)
+[do_test_psram]cmd:1, unit:4, addr:0x60000000, val:0xaaaaaaaa, cnt:1, addr_delta:0x1, val_delta:0x1
+i:0, pc:0x60000000, val:0xaaaaaaaa
+write psram by 4 byte(s) over! last addr:0x60000000, last value:0xaaaaaaaa, should val:0xaaaaaaaa
+yeejoin>>
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(1, 4, 0x60000004, 0x55555555, 1, 1, 1)
+[do_test_psram]cmd:1, unit:4, addr:0x60000004, val:0x55555555, cnt:1, addr_delta:0x1, val_delta:0x1
+i:0, pc:0x60000004, val:0x55555555
+write psram by 4 byte(s) over! last addr:0x60000004, last value:0x55555555, should val:0x55555555
+yeejoin>>
+yeejoin>>
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(2, 4, 0X60000000, 0xaaaaaaaa, 1, 1, 1)
+[do_test_psram]cmd:2, unit:4, addr:0x60000000, val:0xaaaaaaaa, cnt:1, addr_delta:0x1, val_delta:0x1
+read psram by 4 byte(s) start......
+addr:0x60000000, value:0xaaaaaaaa, should val:0xaaaaaaaa
+read psram by 4 byte(s) end.
+yeejoin>>
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(2, 4, 0x60000004, 0x55555555, 1, 1, 1)
+[do_test_psram]cmd:2, unit:4, addr:0x60000004, val:0x55555555, cnt:1, addr_delta:0x1, val_delta:0x1
+read psram by 4 byte(s) start......
+addr:0x60000004, value:0x55555555, should val:0x55555555
+read psram by 4 byte(s) end.
+yeejoin>>
+
+
+yeejoin>>test_psram(1, 4, 0X60000000, 0x55555555, 1, 1, 1)
+[do_test_psram]cmd:1, unit:4, addr:0x60000000, val:0x55555555, cnt:1, addr_delta:0x1, val_delta:0x1
+i:0, pc:0x60000000, val:0x55555555
+write psram by 4 byte(s) over! last addr:0x60000000, last value:0x55555555, should val:0x55555555
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(1, 4, 0x60000004, 0xaaaaaaaa, 1, 1, 1)
+[do_test_psram]cmd:1, unit:4, addr:0x60000004, val:0xaaaaaaaa, cnt:1, addr_delta:0x1, val_delta:0x1
+i:0, pc:0x60000004, val:0xaaaaaaaa
+write psram by 4 byte(s) over! last addr:0x60000004, last value:0xaaaaaaaa, should val:0xaaaaaaaa
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(2, 4, 0X60000000, 0x55555555, 1, 1, 1)
+[do_test_psram]cmd:2, unit:4, addr:0x60000000, val:0x55555555, cnt:1, addr_delta:0x1, val_delta:0x1
+read psram by 4 byte(s) start......
+addr:0x60000000, value:0x55555555, should val:0x55555555
+read psram by 4 byte(s) end.
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(2, 4, 0x60000004, 0xaaaaaaaa, 1, 1, 1)
+[do_test_psram]cmd:2, unit:4, addr:0x60000004, val:0xaaaaaaaa, cnt:1, addr_delta:0x1, val_delta:0x1
+read psram by 4 byte(s) start......
+addr:0x60000004, value:0xaaaaaaaa, should val:0xaaaaaaaa
+read psram by 4 byte(s) end.
+yeejoin>>
+
+
+
+
+yeejoin>>
+yeejoin>>test_psram(1, 1, 0X60000000, 0x11, 2, 1, 1)
+[do_test_psram]cmd:1, unit:1, addr:0x60000000, val:0x11, cnt:2, addr_delta:0x1, val_delta:0x1
+write psram by 1 byte(s) over! last addr:0x60000001, last value:0x12, should val:0x12
+yeejoin>>
+yeejoin>>test_psram(2, 1, 0X60000000, 0x11, 2, 1, 1)
+[do_test_psram]cmd:2, unit:1, addr:0x60000000, val:0x11, cnt:2, addr_delta:0x1, val_delta:0x1
+read psram by 1 byte(s) start......
+addr:0x60000000, value:0x11, should val:0x11
+addr:0x60000001, value:0x12, should val:0x12
+read psram by 1 byte(s) end.
+yeejoin>>
+yeejoin>>
+
+
+
+
+yeejoin>>
+yeejoin>>test_psram(1, 2, 0X60000000, 0x2222, 1, 1, 1)
+[do_test_psram]cmd:1, unit:2, addr:0x60000000, val:0x2222, cnt:1, addr_delta:0x1, val_delta:0x1
+write psram by 2 byte(s) over! last addr:0x60000000, last value:0x2222, should val:0x2222
+yeejoin>>
+yeejoin>>test_psram(2, 2, 0X60000000, 0x2222, 1, 1, 1)
+[do_test_psram]cmd:2, unit:2, addr:0x60000000, val:0x2222, cnt:1, addr_delta:0x1, val_delta:0x1
+read psram by 2 byte(s) start......
+addr:0x60000000, value:0x2222, should val:0x2222
+read psram by 2 byte(s) end.
+yeejoin>>
+
+
+
+yeejoin>>
+yeejoin>>test_psram(1, 4, 0X60000000, 0x44444444, 1, 1, 1)
+[do_test_psram]cmd:1, unit:4, addr:0x60000000, val:0x44444444, cnt:1, addr_delta:0x1, val_delta:0x1
+i:0, pc:0x60000000, val:0x44444444
+write psram by 4 byte(s) over! last addr:0x60000000, last value:0x44444444, should val:0x44444444
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(2, 4, 0X60000000, 0x44444444, 1, 1, 1)
+[do_test_psram]cmd:2, unit:4, addr:0x60000000, val:0x44444444, cnt:1, addr_delta:0x1, val_delta:0x1
+read psram by 4 byte(s) start......
+addr:0x60000000, value:0x44444444, should val:0x44444444
+read psram by 4 byte(s) end.
+yeejoin>>
+
+
+
+yeejoin>>
+yeejoin>>test_psram(3, 1, 0X60000000, 0x80000, 1, 1, 1)
+[do_test_psram]cmd:3, unit:1, addr:0x60000000, val:0x80000, cnt:1, addr_delta:0x1, val_delta:0x1
+[byte]write psram over! last addr:0x6007ffff, last value:0xff, i:0x80000
+yeejoin>>
+yeejoin>>
+yeejoin>>
+yeejoin>>test_psram(3, 2, 0X60000000, 0x40000, 1, 1, 1)
+[do_test_psram]cmd:3, unit:2, addr:0x60000000, val:0x40000, cnt:1, addr_delta:0x1, val_delta:0x1
+[half-word]write psram over! last addr:0x6007fffe, last value:0xffff, i:0x40000
+yeejoin>>
+yeejoin>>test_psram(3, 4, 0X60000000, 0x20000, 1, 1, 1)
+[do_test_psram]cmd:3, unit:4, addr:0x60000000, val:0x20000, cnt:1, addr_delta:0x1, val_delta:0x1
+[word]write psram over! last addr:0x6007fffc, last value:0x1ffff, i:0x20000
+yeejoin>>
+
+
+

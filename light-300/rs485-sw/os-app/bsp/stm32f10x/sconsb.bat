@@ -1,0 +1,1 @@
+scons.bat > built-output.txt 2>&1

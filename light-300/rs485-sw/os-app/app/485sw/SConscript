@@ -1,0 +1,17 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+if GetDepend('RT_USING_TL16C554'):
+	src = Split("""
+		lt_485sw.c
+        lt_485sw_analysis.c
+        auto_negoti_timer.c
+	""")
+else:
+	src = []
+
+group = DefineGroup('485sw_pro_app', src, depend=[])
+
+Return('group')

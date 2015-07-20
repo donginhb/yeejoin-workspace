@@ -1,0 +1,40 @@
+import rtconfig
+from building import *
+
+src = []
+
+if GetDepend('RT_USING_RTGUI'):
+	src = Split("""
+	gui_app_init.c
+	zvd_gui_app.c
+	mywidgets/form.c
+	""")
+
+group = DefineGroup('gui_app', src, depend=[])
+
+Return('group')
+
+
+
+#Import('RTT_ROOT')
+#Import('rtconfig')
+#from building import *
+#
+## The set of source files associated with this SConscript file.
+#dfs = Split("""
+#src/dfs.c
+#src/dfs_fs.c
+#src/dfs_file.c
+#src/dfs_posix.c
+#""")
+#
+#
+#src_local = dfs
+## The set of source files associated with this SConscript file.
+#path = [RTT_ROOT + '/components/dfs', RTT_ROOT + '/components/dfs/include']
+#
+#
+#
+#group = DefineGroup('Filesystem', src_local, depend = ['RT_USING_DFS'], CPPPATH = path)
+#
+#Return('group')

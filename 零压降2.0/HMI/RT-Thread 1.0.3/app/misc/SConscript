@@ -1,0 +1,17 @@
+import rtconfig
+from building import *
+
+src = Split("""
+misc_lib.c
+""")
+
+group = DefineGroup('misc_app', src, depend=[])
+
+Return('group')
+
+
+
+#Import('RTT_ROOT')
+#Import('rtconfig')
+#from building import *
+#

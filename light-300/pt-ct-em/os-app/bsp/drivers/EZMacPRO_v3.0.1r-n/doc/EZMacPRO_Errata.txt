@@ -1,0 +1,29 @@
+*******************************************************************************
+*   Copyright 2012 Silicon Laboratories, Inc.                                 *
+*   http://www.silabs.com                                                     *
+*******************************************************************************
+
+
+June 18, 2012
+EZMacPRO Errata (v3.0.1r)
+
+    [1] Description: 
+            The Listen Before Talk (LBT) function does not function at
+            data rates 2.4kbps or lower.
+        Solution: 
+            This functionality may be expanded in a future release,
+            pending customer request.
+
+    [2] Description:
+            The Listen Before Talk (LBT) function does not function correctly 
+            in case of antenna diversity test cards using Si4432 revV2 silicon.
+        Solution:
+            This functionality may be expanded in a future release,
+            pending customer request.
+
+    [3] Description:
+            During the Frequency Hopping mode at 128 kbps data rates,
+            packet errors can up around 5%.
+        Solution:
+            Transmit identical packets over multiple channels to increase
+            the robustness. The issue will be corrected in the next version.

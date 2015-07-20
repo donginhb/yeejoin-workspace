@@ -1,0 +1,37 @@
+import rtconfig
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+
+src_comm = [
+	'rt_apps_init.c', 'misc_lib.c',
+	#'textmenu.c',
+	cwd + '/database/sys_cfg_api.c',
+	#cwd + '/database/syscfgdata.c',
+	#cwd + '/database/base_ds.c',
+]
+
+src_lwip = [
+	cwd + '/lwip_apps/ping.c',
+	cwd + '/lwip_apps/webm_p.c',
+	cwd + '/lwip_apps/httpserver_raw/fs.c',
+	#cwd + '/lwip_apps/httpserver_raw/fsdata_scsi.c',
+	cwd + '/lwip_apps/httpserver_raw/httpd.c',
+	cwd + '/lwip_apps/httpserver_raw/httpd_script.c',
+	cwd + '/lwip_apps/tftp.c',
+	cwd + '/lwip_apps/sntp.c',
+]
+
+src = src_comm + src_lwip
+
+CPPPATH = [
+	cwd,
+	cwd + '/include',
+]
+
+CPPDEFINES = []
+
+group = DefineGroup('base_apps', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES)
+
+Return('group')

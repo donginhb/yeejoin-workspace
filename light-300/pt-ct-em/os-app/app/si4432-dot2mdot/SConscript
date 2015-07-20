@@ -1,0 +1,36 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+src = []
+
+if GetDepend('WIRELESS_MASTER_NODE') or GetDepend('WIRELESS_SLAVE_NODE'):
+	src += Split("""
+		ezmacpro_common.c
+		ms_common.c
+	""")
+
+if  GetDepend('WIRELESS_MASTER_NODE'):
+	src += Split("""
+		master_fsm.c
+		master_app.c
+	""")
+elif GetDepend('WIRELESS_SLAVE_NODE'):
+	src += Split("""
+		slave_fsm.c
+		slave_app.c
+	""")
+
+
+
+# The set of source files associated with this SConscript file.
+path = [
+	GetCurrentDir() + '/include',
+]
+
+
+group = DefineGroup('si4432_app', src, depend=[],  CPPPATH = path)
+
+Return('group')
+

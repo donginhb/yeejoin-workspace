@@ -1,0 +1,37 @@
+Import('RTT_ROOT')
+from building import *
+
+ezmacpro_src = []
+
+if  GetDepend('RT_USING_SI4432_MAC'):
+	ezmacpro_src = Split("""
+		board_dep/si4432_hardif.c
+		board_dep/si443x_const_b1.c
+		board_dep/spi4ezmacpro.c
+		board_dep/timer4ezmacpro.c
+
+		stack/EZMacPro.c
+		stack/EZMacPro_Const.c
+		stack/EZMacPro_TimerInt.c
+		stack/EZMacPro_CallBacks.c
+		stack/EZMacPro_ExternalInt.c
+		""")
+
+# The set of source files associated with this SConscript file.
+src = ezmacpro_src
+
+#path = [RTT_ROOT + '/components/rtgui/include',
+#	RTT_ROOT + '/components/rtgui/common', 
+#	RTT_ROOT + '/components/rtgui/server', 
+#	RTT_ROOT + '/components/rtgui/widgets']
+#group = DefineGroup('MODEM', src, depend = ['RT_USING_ZMODEM'], CPPPATH = path)
+#group = DefineGroup('MODEM', src, depend = ['RT_USING_ZMODEM'])
+
+path = [RTT_ROOT + '/bsp/drivers/EZMacPRO_v3.0.1r-n/include',
+	RTT_ROOT + '/bsp/drivers/EZMacPRO_v3.0.1r-n/board_dep/include',
+	RTT_ROOT + '/bsp/drivers/EZMacPRO_v3.0.1r-n/stack/include']
+
+group = DefineGroup('EZmacPro', src, depend = ['RT_USING_SI4432_MAC'], CPPPATH = path)
+
+
+Return('group')

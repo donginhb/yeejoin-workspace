@@ -1,0 +1,41 @@
+import rtconfig
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+
+# Human Machine Interface
+src_hmi = [
+	#cwd + '/HMI/keyboard/keyboard.c',
+	# #cwd + '/HMI/keyboard/tca8418.c',
+	#cwd + '/HMI/lcd-touch/lcd_touch.c',
+	#cwd + '/HMI/lcd-touch/RA8875.c',
+	#cwd + '/HMI/lcd-touch/ili9320.c',
+	#cwd + '/HMI/lcd-touch/RA8875_Function.c',
+]
+
+src_net = [
+	#cwd + '/net/enc28j60.c',  
+	#cwd + '/net/atheros/athrs27_phy.c',
+	#cwd + '/net/enc28j60_init.c',  
+	#cwd + '/net/enc28j60_io.c',  
+	#cwd + '/net/enc28j60_packet.c',  
+	#cwd + '/net/enc28j60_status.c',  
+]
+
+src_misc = [
+	'am2301.c'
+]
+
+src = src_hmi + src_net + src_misc
+
+CPPPATH = [
+	cwd,
+	cwd + '/include',
+]
+
+CPPDEFINES = []
+
+group = DefineGroup('bsp_drivers', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES)
+
+Return('group')

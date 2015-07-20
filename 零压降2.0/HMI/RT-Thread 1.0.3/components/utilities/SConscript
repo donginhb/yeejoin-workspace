@@ -1,0 +1,24 @@
+Import('RTT_ROOT')
+from building import *
+
+zmodem_src = Split("""
+zmodem/crc.c
+zmodem/rz.c
+zmodem/sz.c
+zmodem/zcore.c
+zmodem/zdevice.c
+zmodem/zstart.c
+""")
+
+# The set of source files associated with this SConscript file.
+src = zmodem_src
+
+#path = [RTT_ROOT + '/components/rtgui/include',
+#	RTT_ROOT + '/components/rtgui/common', 
+#	RTT_ROOT + '/components/rtgui/server', 
+#	RTT_ROOT + '/components/rtgui/widgets']
+#group = DefineGroup('MODEM', src, depend = ['RT_USING_ZMODEM'], CPPPATH = path)
+
+group = DefineGroup('MODEM', src, depend = ['RT_USING_ZMODEM'])
+
+Return('group')

@@ -1,0 +1,16 @@
+Import('RTT_ROOT')
+Import('rtconfig')
+from building import *
+
+src = []
+
+if  GetDepend('RT_USING_LWIP'):
+	src	= Glob('*.c')
+	
+#CPPPATH = [GetCurrentDir()]
+
+#group = DefineGroup('finsh', src, depend = ['RT_USING_FINSH'], CPPPATH = CPPPATH, LINKFLAGS = LINKFLAGS, LIBRARY = '')
+group = DefineGroup('net', src,  depend = ['RT_USING_LWIP'])
+
+
+Return('group')

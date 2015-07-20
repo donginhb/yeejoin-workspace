@@ -1,0 +1,37 @@
+import rtconfig
+from building import *
+
+cwd = GetCurrentDir()
+
+src = []
+
+if GetDepend('RT_USING_TCPIP_STACK'):
+	src += Split("""
+		ping.c
+		sntp.c
+		""")
+
+if GetDepend('RT_USING_TFTP'):
+	src += Split("""
+		tftp.c
+	""")
+		
+if GetDepend('RT_USING_TELNETD'):
+	src += Split("""
+		telnetd/telnetd.c
+		telnetd/telnetio.c
+	""")
+
+#if GetDepend('RT_USING_HTTPSERVER_RAW'):
+if 0:
+	src += Split("""
+		httpserver_raw/fs.c
+		httpserver_raw/fsdata_scsi.c
+		httpserver_raw/httpd.c
+		httpserver_raw/httpd_script.c
+	""")
+	
+
+group = DefineGroup('lwip_apps', src, depend=['RT_USING_TCPIP_STACK'])
+
+Return('group')

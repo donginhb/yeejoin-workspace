@@ -1,0 +1,12 @@
+import rtconfig
+from building import *
+
+src = Split("""
+info_tran.c
+rxe_msg_proc.c
+""")
+
+group = DefineGroup('re_lcd_app', src, depend=[])
+
+Return('group')
+
