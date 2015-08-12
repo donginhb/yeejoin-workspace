@@ -1,0 +1,22 @@
+from building import *
+
+cwd = GetCurrentDir()
+
+src_comm = [
+	cwd + '/sys_cfg_api.c',
+	cwd + '/syscfgdata.c',
+]
+
+src = src_comm
+
+CPPPATH = [
+	cwd,
+	cwd + '/include',
+	cwd + '/../app/include'
+]
+
+CPPDEFINES = []
+
+group = DefineGroup('database', src, depend = [''], CPPPATH = CPPPATH, CPPDEFINES = CPPDEFINES)
+
+Return('group')
